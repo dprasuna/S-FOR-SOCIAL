@@ -1,0 +1,38 @@
+<%- include('partials/header') %>
+<!-- Navigation -->
+<%- include('partials/nav') %>
+<!-- Main Content -->
+<div class="w-[80%] mx-auto p-10">
+
+  <!-- Welcome Section -->
+  <div class="w-full bg-zinc-800 rounded-lg shadow-lg p-8 mb-10">
+    <h1 class="mb-6 text-white text-5xl font-bold text-center">Welcome to Our Homepage!</h1>
+    <p class="text-white text-lg text-center mb-6">Start your journey with us and explore all that we have to offer.</p>
+    <div class="text-center">
+      <a class="bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded-lg shadow transition duration-300" href="/login">Start Your Journey</a>
+    </div>
+  </div>
+
+  <!-- Posts Section -->
+  <div class="w-full bg-zinc-700 rounded-lg shadow-lg p-8">
+    <h2 class="text-3xl font-bold text-white mb-4">Recent Posts</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <% if (posts && posts.length > 0) { %>
+        <% posts.forEach(post => { %>
+          <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition duration-300">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2"><%= post.title %></h3>
+            <p class="text-gray-700 mb-4">
+              <%= (post.content && post.content.length > 0 ? post.content.slice(0, 100) : "No content available") %>...
+            </p>
+            <a href="/post/<%= post.id %>" class="text-blue-500 hover:underline">Read more</a>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <p class="text-white">No posts available at the moment.</p>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<%- include('partials/footer') %>

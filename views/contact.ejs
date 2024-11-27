@@ -1,0 +1,58 @@
+<%- include('partials/header')%>
+<!--  -->
+<%- include('partials/nav')%>
+<!--  -->
+<div class="w-[80%] mx-auto p-10 bg-zinc-700 rounded">
+  <h1 class="mb-10 text-white text-5xl font-bold">Contact Us</h1>
+
+  <section class="mb-10">
+    <h2 class="text-3xl font-semibold text-white mb-4">Get in Touch</h2>
+    <p class="text-white">
+      We'd love to hear from you! Whether you have questions, feedback, or just want to connect, please feel free to reach out to us through the contact methods below.
+    </p>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="text-3xl font-semibold text-white mb-4">Contact Details</h2>
+    <ul class="text-white">
+      <li><strong>Email:</strong> <a href="mailto:support@example.com" class="text-blue-300">support@example.com</a></li>
+      <li><strong>Phone:</strong> <a href="tel:+1234567890" class="text-blue-300">(123) 456-7890</a></li>
+      <li><strong>Address:</strong> 123 Main Street, City, Country</li>
+    </ul>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="text-3xl font-semibold text-white mb-4">Connect with Us</h2>
+    <div class="flex space-x-4">
+      <a href="https://www.facebook.com/yourpage" class="text-blue-600">Facebook</a>
+      <a href="https://twitter.com/yourhandle" class="text-blue-400">Twitter</a>
+      <a href="https://www.linkedin.com/in/yourprofile" class="text-blue-500">LinkedIn</a>
+      <a href="https://www.instagram.com/yourprofile" class="text-pink-500">Instagram</a>
+    </div>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="text-3xl font-semibold text-white mb-4">Contact Form</h2>
+    <form action="/send-message" method="POST" class="space-y-4">
+      <div>
+        <label for="name" class="block text-white">Name</label>
+        <input type="text" id="name" name="name" class="w-full p-2 rounded" required>
+      </div>
+      <div>
+        <label for="email" class="block text-white">Email</label>
+        <input type="email" id="email" name="email" class="w-full p-2 rounded" required>
+      </div>
+      <div>
+        <label for="message" class="block text-white">Message</label>
+        <textarea id="message" name="message" class="w-full p-2 rounded" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="bg-red-300 px-5 py-2 text-white rounded hover:bg-red-400 transition">Send Message</button>
+    </form>
+  </section>
+
+  <div class="text-center mt-10">
+    <a class="bg-red-300 px-5 py-2 text-white rounded hover:bg-red-400 transition" href="/login">Start Your Journey</a>
+  </div>
+</div>
+<!--  -->
+<%- include('partials/footer')%>

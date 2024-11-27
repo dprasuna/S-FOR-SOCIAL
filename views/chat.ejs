@@ -1,0 +1,64 @@
+<script>
+  var socket = io();
+  const loggedInUsername = "<%= user.username %>";
+  let receiver = null;
+
+  // Emit join event for the current user
+  socket.emit('join', loggedInUsername);
+
+  function openChat(userImage, username) {
+    receiver = username;
+    document.querySelector('.right .top .user img').src = userImage;
+    document.querySelector('.right .top .user h1').innerText = username;
+
+    socket.emit('openChat', {
+      receiver,
+      sender: loggedInUsername
+    });
+  }
+
+  socket.on("openChat", messages => {
+    const conversationArea = document.querySelector('.converationArea');
+    messages.forEach(messageObject => {
+      if (messageObject.sender === loggedInUsername) {
+        appendOutgoingMessage(messageObject.text, conversationArea);
+      } else {
+        appendIncomingMessage(messageObject.text, conversationArea);
+      }
+    });
+  });
+
+  function appendOutgoingMessage(message, container) {
+    const div = document.createElement('div');
+    div.classList.add('message', 'ml-auto', 'bg-slate-400', 'w-fit', 'p-2', 'rounded-sm');
+    div.innerHTML = `<p>${message}</p>`;
+    container.appendChild(div);
+  }
+
+  function appendIncomingMessage(message, container) {
+    const div = document.createElement('div');
+    div.classList.add('message', 'bg-slate-400', 'w-fit', 'p-2', 'rounded-sm');
+    div.innerHTML = `<p>${message}</p>`;
+    container.appendChild(div);
+  }
+
+  socket.on('max', messageObject => {
+    const conversationArea = document.querySelector('.converationArea');
+    appendIncomingMessage(messageObject.message, conversationArea);
+  });
+
+  document.querySelector('#sendMessage').addEventListener('click', () => {
+    const messageInput = document.querySelector('.inputField input');
+    const message = messageInput.value.trim();
+
+    if (message) {
+      appendOutgoingMessage(message, document.querySelector('.converationArea'));
+      socket.emit('sony', {
+        message,
+        receiver,
+        sender: loggedInUsername
+      });
+      messageInput.value = ''; // Clear input after sending
+    }
+  });
+</script>

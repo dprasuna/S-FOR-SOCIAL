@@ -1,0 +1,38 @@
+<%- include('partials/header') %>
+<%- include('partials/nav') %>
+
+<!-- Main Content -->
+<div class="w-[90%] md:w-[70%] lg:w-[50%] mx-auto p-8 bg-white rounded-lg shadow-lg border border-gray-200 mt-10 mb-20">
+  <form class="text-lg md:text-2xl m-auto" action="/user/login" method="post">
+    <h1 class="mb-10 text-3xl md:text-5xl font-extrabold text-center text-gray-800">Login User</h1>
+
+    <!-- Username Input -->
+    <input class="w-full mb-5 border-2 border-gray-300 p-3 rounded-lg focus:outline-none focus:border-blue-500 transition duration-300" 
+           type="text" 
+           placeholder="Username" 
+           name="username">
+
+    <!-- Password Input -->
+    <input class="w-full mb-5 border-2 border-gray-300 p-3 rounded-lg focus:outline-none focus:border-blue-500 transition duration-300" 
+           type="password" 
+           placeholder="********" 
+           name="password">
+
+    <!-- Forgot Password Link -->
+    <p class="text-right mb-3">
+      <a class="text-blue-500 font-medium hover:underline" href="/forget-email">Forgot password?</a>
+    </p>
+
+    <!-- Submit Button -->
+    <button class="w-full md:w-1/2 bg-red-300 hover:bg-red-400 text-white px-5 py-3 rounded-lg font-semibold transition duration-300 transform hover:scale-105 mx-auto block">
+      Login User
+    </button>
+
+    <!-- Register Link -->
+    <p class="text-center mt-5 text-gray-600">
+      Don't have an account? <a class="text-blue-500 font-medium hover:underline" href="/register">Register</a>
+    </p>
+  </form>
+</div>
+
+<%- include('partials/footer') %>
